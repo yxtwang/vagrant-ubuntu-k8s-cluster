@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # 指定主控节点的IP地址
-MASTER_IP="192.168.100.21"
+MASTER_IP="192.168.0.21"
 # 指定主控节点的主机名
 NODENAME=$(hostname -s)
 # 指定当前 K8s 集群中 Service 所使用的 CIDR
@@ -9,7 +9,7 @@ SERVICE_CIDR="10.96.0.0/12"
 # 指定当前 K8s 集群中 Pod 所使用的 CIDR
 POD_CIDR="10.244.0.0/16"
 # 指定当前使用的 K8s 版本
-KUBE_VERSION=v1.21.1
+KUBE_VERSION=v1.21.5
 
 # 特别预先加载 coredns 插件
 COREDNS_VERSION=1.8.0

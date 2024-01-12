@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # 指定要安装哪一个版本的K8s
-KUBERNETES_VERSION="1.21.1-00"
+KUBERNETES_VERSION="1.21.5-00"
 
 # 关闭swap分区
 sudo swapoff -a
@@ -13,16 +13,17 @@ echo "Swap diasbled..."
 sudo ufw disable
 
 # 安装一些 Docker+k8s 环境的依赖项
-sudo apt update -y
-sudo apt install -y apt-transport-https ca-certificates curl wget software-properties-common
+sudo apt update -y 2>/dev/null
+sudo apt install -y apt-transport-https ca-certificates curl wget software-properties-common 2>/dev/null
 
 echo "Dependencies installed..."
 
 # 安装并配置 Docker CE
 curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt update -y
-sudo apt install -y docker-ce
+sudo apt update -y  2>/dev/null
+sudo apt install -y docker-ce 2>/dev/null
+
 
 cat <<EOF | sudo tee /etc/docker/daemon.json
 {
@@ -43,15 +44,15 @@ curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key ad
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubenetes.list
 deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
 EOF
-sudo apt update -y
-sudo apt install -y kubelet=$KUBERNETES_VERSION kubectl=$KUBERNETES_VERSION kubeadm=$KUBERNETES_VERSION
+sudo apt update -y  2>/dev/null
+sudo apt install -y kubelet=$KUBERNETES_VERSION kubectl=$KUBERNETES_VERSION kubeadm=$KUBERNETES_VERSION  2>/dev/null
 
 # 如果想阻止自动更新，可以选择锁住相关软件的版本
 sudo apt-mark hold kubeadm kubectl kubelet
 
 # 启动 K8s 的服务组件：kubelet
-sudo systemctl start kubelet  
-sudo systemctl enable kubelet   
+sudo systemctl start kubelet
+sudo systemctl enable kubelet
 
 echo "K8s installed and configured..."
 

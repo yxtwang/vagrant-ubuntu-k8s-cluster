@@ -28,19 +28,19 @@ vagrant up
 
 |   主机名    |     IP地址     | 内存 | 处理器数量 |   操作系统   |
 | :---------: | :------------: | :--: | :--------: | :----------: |
-| k8s-master  | 192.168.100.21 |  2G  |     2      | Ubuntu 20.04 |
-| k8s-worker1 | 192.168.100.22 |  2G  |     2      | Ubuntu 20.04 |
-| k8s-worker2 | 192.168.100.23 |  2G  |     2      | Ubuntu 20.04 |
+| k8s-master  | 192.168.0.21 |  2G  |     2      | Ubuntu 22.04 |
+| k8s-worker1 | 192.168.0.22 |  2G  |     2      | Ubuntu 22.04 |
+| k8s-worker2 | 192.168.0.23 |  2G  |     2      | Ubuntu 22.04 |
 
 根据在`vagrantfile`中的定义，Vagrant 在构建上述虚拟机的同时还会自动执行`scripts`目录中的脚本，这些脚本将会自动为虚拟机配置、安装 Docker 与 Kubernetes 环境，以下是其安装软件的版本信息：
 
 ```bash
 Docker-CE:  20.10.17
-Kubernetes: 1.21.1
-    kube-apiserver: v1.21.1
-    kube-proxy: v1.21.1
-    kube-controller-manager: v1.21.1
-    kube-scheduler: v1.21.1
+Kubernetes: 1.21.5
+    kube-apiserver: v1.21.5
+    kube-proxy: v1.21.5
+    kube-controller-manager: v1.21.5
+    kube-scheduler: v1.21.5
     pause: 3.4.1
     coredns: v1.8.0
     etcd: 3.4.13-0  
@@ -93,7 +93,7 @@ cp ./configs/config  ~/.kube/
 
 ```bash
 NAME          STATUS     ROLES                  AGE   VERSION
-k8s-master    Ready      control-plane,master   22h   v1.21.1
-k8s-worker1   Ready      <none>                 20h   v1.21.1
-k8s-worker2   Ready      <none>                 21h   v1.21.1
+k8s-master    Ready      control-plane,master   22h   v1.21.5
+k8s-worker1   Ready      <none>                 20h   v1.21.5
+k8s-worker2   Ready      <none>                 21h   v1.21.5
 ```
