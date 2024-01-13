@@ -35,7 +35,7 @@ vagrant up
 根据在`vagrantfile`中的定义，Vagrant 在构建上述虚拟机的同时还会自动执行`scripts`目录中的脚本，这些脚本将会自动为虚拟机配置、安装 Docker 与 Kubernetes 环境，以下是其安装软件的版本信息：
 
 ```bash
-Docker-CE:  20.10.17
+Docker-CE:  24.0.7
 Kubernetes: 1.21.5
     kube-apiserver: v1.21.5
     kube-proxy: v1.21.5
@@ -96,4 +96,9 @@ NAME          STATUS     ROLES                  AGE   VERSION
 k8s-master    Ready      control-plane,master   22h   v1.21.5
 k8s-worker1   Ready      <none>                 20h   v1.21.5
 k8s-worker2   Ready      <none>                 21h   v1.21.5
+```
+
+网络引起的问题，请参考：
+```bash
+https://www.youtube.com/watch?v=5CZH08Jw5FY&list=PLpI7LqiWbCTrs8SJlUCMllRUzShSzZIyC&index=23&ab_channel=mouyang
 ```
