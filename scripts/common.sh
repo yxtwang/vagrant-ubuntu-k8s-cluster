@@ -1,7 +1,6 @@
 #! /bin/bash
 
 # 指定要安装哪一个版本的K8s
-# KUBERNETES_VERSION="1.28.2-00"
 KUBERNETES_VERSION="1.21.5-00"
 
 # 关闭swap分区

@@ -10,11 +10,9 @@ SERVICE_CIDR="10.96.0.0/12"
 POD_CIDR="10.244.0.0/16"
 # 指定当前使用的 K8s 版本
 KUBE_VERSION=v1.21.5
-# KUBE_VERSION=v1.28.2
 
 # 特别预先加载 coredns 插件
 COREDNS_VERSION=1.8.0
-
 sudo docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:$COREDNS_VERSION
 sudo docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:$COREDNS_VERSION registry.cn-hangzhou.aliyuncs.com/google_containers/coredns/coredns:v$COREDNS_VERSION
 
@@ -50,9 +48,9 @@ sudo chmod +x $config_path/join.sh
 kubeadm token create --print-join-command > $config_path/join.sh
 
 # 安装名为 calico 的网路插件 https://www.cnblogs.com/LiuChang-blog/p/15311434.html
-# 1. 网络安装
-# sudo wget https://docs.projectcalico.org/v3.26.1/manifests/calico.yaml
-sudo wget https://docs.projectcalico.org/manifests/calico.yaml
+# 1. 网络安装 https://blog.csdn.net/qq_32596527/article/details/127692734
+# sudo wget https://docs.projectcalico.org/manifests/calico.yaml
+sudo wget https://projectcalico.docs.tigera.io/archive/v3.21/manifests/calico.yaml
 sudo kubectl apply -f calico.yaml
 
 # 安装名为 flannel 的网路插件

@@ -25,6 +25,7 @@ vm_list = [
 Vagrant.configure(2) do |config|
     # https://app.vagrantup.com/boxes/search
     config.vm.box = "gusztavvargadr/ubuntu-server"
+    # config.vm.box = "bento/ubuntu-22.04"
     config.vm.box_check_update = false
     Encoding.default_external = 'UTF-8'
     vm_list.each do |item|
